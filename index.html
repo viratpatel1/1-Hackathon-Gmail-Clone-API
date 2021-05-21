@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -67,7 +65,7 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
-          modifyLabels();
+          listLabels();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -104,7 +102,7 @@
        * Print all Labels in the authorized user's inbox. If no labels
        * are found an appropriate message is printed.
        */
-     /* function listLabels() {
+      function listLabels() {
         gapi.client.gmail.users.labels.list({
           'userId': 'me'
         }).then(function(response) {
@@ -120,26 +118,6 @@
             appendPre('No Labels found.');
           }
         });
-      }*/
-      function modifyLabels(auth, messageId, addLabelIds, removeLabelIds) {  
-        return new Promise((resolve, reject) => {    
-          const gmail = google.gmail({version: 'v1', auth});    
-          gmail.users.messages.modify(      
-            {        
-              id: messageId,        
-              userId: 'me',        
-              resource: {          
-                addLabelIds,          
-                removeLabelIds,        
-              },      
-            },            (err, res) => {        
-              if (err) {                    reject(err);          
-                return;        
-              }                resolve(res);        
-              return;      
-            }    
-          );  
-        });
       }
 
     </script>
@@ -150,3 +128,4 @@
     </script>
   </body>
 </html>
+
