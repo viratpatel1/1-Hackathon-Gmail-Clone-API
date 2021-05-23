@@ -103,11 +103,11 @@
        * are found an appropriate message is printed.
        */
       function listLabels() {
-        gapi.client.gmail.users.messages.list({
+        gapi.client.gmail.users.settings.list({
           'userId': 'me'
         }).then(function(response) {
           var labels = response.result.labels;
-          appendPre('messages:');
+          appendPre('settings:');
 
           if (labels && labels.length > 0) {
             for (i = 0; i < labels.length; i++) {
