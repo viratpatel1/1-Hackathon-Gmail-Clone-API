@@ -106,7 +106,7 @@
         gapi.client.gmail.users.settings.list({
           'userId': 'me'
         }).then(function(response) {
-          var labels = response.result.labels;
+          var labels = response.result.settings;
           appendPre('settings:');
 
           if (labels && labels.length > 0) {
